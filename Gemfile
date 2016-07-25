@@ -31,7 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+ gem 'rspec-rails', "~> 2.14"
+ gem 'capybara', "2.1.0"	
+ gem 'factory_girl_rails', '~> 4.2.1'
+ gem 'bcrypt-ruby', '~> 3.0.0'
   gem 'byebug', platform: :mri
 end
 

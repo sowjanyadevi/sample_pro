@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <h2 id="ticket"><%= @ticket.title %></h2>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ticket.description %>
+</p>
+	
+<%= link_to 'Edit', edit_project_ticket_path(@project) %> |
+<%= link_to 'Back', project_tickets_path %>
+<%= link_to "New Ticket", new_project_ticket_path(@project) %>
+<%= link_to "TextMate 2", project_tickets_path %>
+<%= link_to "Make it shiny!", project_tickets_path %>
+
