@@ -11,7 +11,8 @@ class TicketsController < ApplicationController
   # GET  tickets/1.json
   def show
      @ticket = Ticket.find(params[:id])
-    @project = Project.find(params[:project_id])
+    @projects = Project.all
+    @comment = @ticket.comments.build
     render "show"
 
   end
@@ -29,17 +30,16 @@ end
 
   # POST  tickets
   # POST  tickets.json
- 
    def create
-    @ticket = @project.tickets.build(ticket_params)
-    if @ticket.save
-    flash[:notice] = "Ticket has been created."
-    redirect_to [@project, @ticket]
-    else
-    flash[:alert] = "Ticket has not been created."
-    render "new"
-    end
-  end
+@ticket = @project.tickets.build(ticket_params)
+if @ticket.save
+flash[:notice] = "Ticket has been created."
+redirect_to [@project, @ticket]
+else
+flash[:alert] = "Ticket has not been created."
+render "new"
+end
+end
     def update
       if @ticket.update(ticket_params)
       flash[:notice] = "Ticket has been updated."

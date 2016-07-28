@@ -1,36 +1,36 @@
 require 'spec_helper'
-describe User do
+describe Customer do
 describe "passwords" do
 it "needs a password and confirmation to save" do
-u = User.new(name: "steve")
-u.save
-expect(u).to_not be_valid
-u.password = "password"
-u.password_confirmation = ""
-u.save
-expect(u).to_not be_valid
-u.password_confirmation = "password"
-u.save
-expect(u).to be_valid
+c = Customer.new(name: "steve")
+c.save
+expect(c).to_not be_valid
+c.password = "password"
+c.password_confirmation = ""
+c.save
+expect(c).to_not be_valid
+c.password_confirmation = "password"
+c.save
+expect(c).to be_valid
 end
 it "needs password and confirmation to match" do
-u = User.create(
+c = Customer.create(
 name: "steve",
 password: "hunter2",
 password_confirmation: "hunter")
-expect(u).to_not be_valid
+expect(c).to_not be_valid
 end
 end
 describe "authentication" do
-let(:user) { User.create(
+let(:customer) { Customer.create(
 name: "steve",
 password: "hunter2",
 password_confirmation: "hunter2") }
 it "authenticates with a correct password" do
-expect(user.authenticate("hunter2")).to be
+expect(customer.authenticate("hunter2")).to be
 end
 it "does not authenticate with an incorrect password" do
-expect(user.authenticate("hunter1")).to_not be
+expect(customer.authenticate("hunter1")).to_not be
 end
 end
 end

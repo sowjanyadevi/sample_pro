@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h4>Example ticket</h4>
+
 <p>
   <strong>Title:</strong>
   <h2 id="ticket"><%= @ticket.title %></h2>
@@ -9,10 +11,30 @@
   <strong>Description:</strong>
   <%= @ticket.description %>
 </p>
-	
-<%= link_to 'Edit', edit_project_ticket_path(@project) %> |
-<%= link_to 'Back', project_tickets_path %>
+<!--<#% title(@project.name, "Projects") %> -->
+<div id='ticket'>
+<h2><%= @ticket.title %></h2>
+<%= simple_format(@ticket.description) %>
+</div>
+
+ <ul id='tickets'>
+<% @project.tickets.each do |ticket| %>
+<li>
+#<%= ticket.id %> -
+<%= link_to ticket.title, [@project, ticket] %>
+</li>
+<% end %>
+</ul>
+<%= render "comments/form" %>
+<%= link_to "Edit Project", edit_project_ticket_path(@project) %>
+<%= link_to "Delete Project",
+    project_ticket_path(@project),
+    method: :delete, data: { confirm:
+              "Are you sure you want to delete this project?"
+          } %>
+
 <%= link_to "New Ticket", new_project_ticket_path(@project) %>
-<%= link_to "TextMate 2", project_tickets_path %>
-<%= link_to "Make it shiny!", project_tickets_path %>
+
+</br>
+<%= link_to "Home", project_ticket_path %>
 

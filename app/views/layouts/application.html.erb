@@ -10,14 +10,8 @@
 
   <body>
     <%= yield %>
-    <nav>
-    <ul>
-<li><%= link_to "Sign up", new_user_path %></li>
-<li><%= link_to "Sign in", signin_path %></li>
-</ul>
-</nav>
 <nav>
-<%= link_to "Edit Profile", new_user_path %>
+<%= link_to "Edit Profile", new_project_path %>
 </nav>
   </body>
 </html>
