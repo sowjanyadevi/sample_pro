@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  resources :people
+ 
+  get 'customer/new'
+
+  get 'customer/create'
+
+  get 'customer/show'
+
   resources :projects do
     resources :tickets
   end
   resources :purchases
-  resources :peoples
+  resources :customers
+
  root :to => "projects#index"
 end
