@@ -3,6 +3,7 @@ class TicketsController < ApplicationController
   # GET  tickets.json
   before_action :set_project
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+before_action :require_signin!, except: [:show, :index]
   def index
      @tickets = Ticket.all
   end
@@ -32,6 +33,7 @@ end
   # POST  tickets.json
    def create
 @ticket = @project.tickets.build(ticket_params)
+@ticket.customer = current_customer
 if @ticket.save
 flash[:notice] = "Ticket has been created."
 redirect_to [@project, @ticket]
@@ -41,14 +43,14 @@ render "new"
 end
 end
     def update
-      if @ticket.update(ticket_params)
-      flash[:notice] = "Ticket has been updated."
-      redirect_to project_ticket_url
-      else
-            render 'edit'
-      end
-  end
-
+if @ticket.update(ticket_params)
+flash[:notice] = "Ticket has been updated."
+redirect_to [@project, @ticket]
+else
+flash[:alert] = "Ticket has not been updated."
+render action: "edit"
+end
+end
    def destroy
 @ticket = Ticket.find(params[:id])
 @ticket.destroy

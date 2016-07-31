@@ -1,5 +1,7 @@
 class Ticket < ApplicationRecord
-	has_many :comments
+
+	belongs_to :customer
 	validates :title, presence: true
 validates :description, presence: true
+
 end

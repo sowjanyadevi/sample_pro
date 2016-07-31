@@ -1,6 +1,8 @@
 <h1>Editing ticket</h1>
 
-<%= render 'form', ticket: @ticket %>
+
+<h2>Editing a ticket in <%= @project.name %></h2>
+<%= render "form" %>
 
 <%= link_to 'Show', edit_project_ticket_path %> |
 <%= link_to 'Back', edit_project_ticket_path  %>

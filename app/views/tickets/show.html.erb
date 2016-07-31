@@ -19,13 +19,15 @@
 
  <ul id='tickets'>
 <% @project.tickets.each do |ticket| %>
+
 <li>
 #<%= ticket.id %> -
 <%= link_to ticket.title, [@project, ticket] %>
+<span id='author'>Created by <%= @ticket.customer.email %></span>
 </li>
 <% end %>
 </ul>
-<%= render "comments/form" %>
+
 <%= link_to "Edit Project", edit_project_ticket_path(@project) %>
 <%= link_to "Delete Project",
     project_ticket_path(@project),
@@ -34,6 +36,7 @@
           } %>
 
 <%= link_to "New Ticket", new_project_ticket_path(@project) %>
+<%= link_to "Edit Ticket", [:edit, @project, @ticket] %>
 
 </br>
 <%= link_to "Home", project_ticket_path %>

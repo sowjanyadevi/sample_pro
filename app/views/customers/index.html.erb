@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>New Customer</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>password</th>
+      <th>password_confirmation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><h2 id="customer"><%= customer.title %></h2></td>
+        <td><h2 id="customer"><%= customer.description %></h2></td>
+        <td><%= link_to 'Show', project_customer_path(:project_id => @project.id, :id => customer.id)%></td>
+        <td><%= link_to 'Edit', edit_project_customer_path(@project, customer) %></td>
+        <td><%= link_to 'Destroy', project_customer_path(:project_id => @project.id, :id => customer.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New customer', new_project_customer_path %>
