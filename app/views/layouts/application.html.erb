@@ -18,5 +18,11 @@
 <nav>
 <%= link_to "Edit Profile", new_project_path %>
 </nav>
+<% if current_customer %>
+Signed in as <%= current_customer.email %>
+<% admins_only do %>
+<%= link_to "Admin", admin_root_path %>
+<% end %>
+<% else %>
   </body>
 </html>
