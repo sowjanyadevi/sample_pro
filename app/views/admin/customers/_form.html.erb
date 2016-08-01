@@ -19,4 +19,8 @@ this customer from being saved:</h2>
 <%= f.password_field :password %>
 </p>
 <%= f.submit %>
+<p>
+<%= f.check_box :admin %>
+<%= f.label :admin, "Is an admin?" %>
+</p>
 <% end %>

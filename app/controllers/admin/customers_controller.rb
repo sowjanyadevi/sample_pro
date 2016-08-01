@@ -20,6 +20,6 @@ end
 private
 def customer_params
 params.require(:customer).permit(:name,
-:password,:password_confirmation)
+:password,:password_confirmation,:admin)
 end
 end

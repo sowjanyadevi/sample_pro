@@ -14,4 +14,14 @@ fill_in "Password", with: "password"
 click_button "Create customer"
 expect(page).to have_content("Customer has been created.")
 end
+before do
+fill_in "Email", with: "admin@example.com"
+fill_in "Password", with: "password"
+check "Is an admin?"
+click_button "Creating Customer"
+expect(page).to have_content("Customer has been created")
+within("#customers") do
+expect(page).to have_content("admin@example.com (Admin)")
+end
+end
 end

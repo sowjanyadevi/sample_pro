@@ -1,6 +1,6 @@
 <%= link_to "New Customer", new_admin_customer_path %>
 <ul id='customers'>
 <% @customers.each do |customer| %>
-<li><%= link_to customer.email, [:admin, customer] %></li>
+<li><%= link_to customer, [:admin, customer] %></li>
 <% end %>
 </ul>
