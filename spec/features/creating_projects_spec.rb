@@ -1,6 +1,6 @@
 require 'spec_helper'
 feature 'Creating Projects' do
-scenario "can create a project" do
+before do
 sign_in_as!(FactoryGirl.create(:admin_customer))
 visit '/'
 click_link 'New Project'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 feature 'Signing up' do
-scenario 'Successful sign up' do
+before do
 visit '/'
 click_link 'Sign up'
 fill_in "Email", with: "customer@example.com"

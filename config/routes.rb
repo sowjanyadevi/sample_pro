@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
  
+  namespace :admin do
+   resources :customers
+  end
   get 'customer/new'
 
   get 'customer/create'

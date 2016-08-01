@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  # GET /projects
-  # GET /projects.json
+  before_action :authorize_admin!, except: [:index, :show]
+before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
     @projects = Project.all
   end
@@ -21,8 +21,13 @@ class ProjectsController < ApplicationController
 @project = Project.find(params[:id])
 end
 
-  # POST /projects
-  # POST /projects.json
+ def authorize_admin!
+require_signin!
+unless current_customer.admin?
+flash[:alert] = "You must be an admin to do that."
+redirect_to root_path
+end
+endn
  
    def create
         @project = Project.new(project_params)

@@ -1,7 +1,6 @@
 require 'spec_helper'
 feature "Editing Projects" do
-	before do
-scenario "Updating a project" do
+before do
 FactoryGirl.create(:project, name: "TextMate 2")
 visit "/"
 click_link "TextMate 2"
