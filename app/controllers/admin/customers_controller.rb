@@ -35,6 +35,11 @@ flash[:alert] = "Customer has not been updated."
 render action: "edit"
 end
 end
+def destroy
+@customer.destroy
+flash[:notice] = "customer has been deleted."
+redirect_to admin_customers_path
+end
 private
 def customer_params
 params.require(:customer).permit(:name,
