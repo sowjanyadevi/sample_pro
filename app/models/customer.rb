@@ -3,4 +3,5 @@ class Customer < ApplicationRecord
 def to_s
 "#{email} (#{admin? ? "Admin" : "Customer"})"
 end
+validates :email, presence: true
 end

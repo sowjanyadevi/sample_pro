@@ -1,9 +1,14 @@
 class Admin::CustomersController < ApplicationController
+	before_action :set_customer, only: [:show, :edit, :update, :destroy]
   def index
 @customers = CUstomer.order(:email)
 end
 def new
 @customer = Customer.new
+end
+def show
+end
+def edit
 end
 def create
 params = customer_params.dup
@@ -17,9 +22,25 @@ flash.now[:alert] = "Customer has not been created."
 render :action => "new"
 end
 end
+def update
+	if params[:customer][:password].blank?
+params[:customer].delete(:password)
+params[:customer].delete(:password_confirmation)
+end
+if @customer.update(customer_params)
+flash[:notice] = "Customer has been updated."
+redirect_to admin_customers_path
+else
+flash[:alert] = "Customer has not been updated."
+render action: "edit"
+end
+end
 private
 def customer_params
 params.require(:customer).permit(:name,
 :password,:password_confirmation,:admin)
+end
+def set_customer
+@customer = Customer.find(params[:id])
 end
 end
